@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
@@ -11,6 +11,7 @@ function Login() {
 
   const [Email, setEmail] = React.useState("");
   const [Password, setPassword] = React.useState("");
+  const [error , seterror] = useState("");
 
   const handleLogin = async () => {
     try {
@@ -21,7 +22,7 @@ function Login() {
       dispatch(addUser(res.data));
       navigate("/");
     } catch (err) {
-      console.log(err);
+      seterror(err?.response?.data || "Something went wrong!!");
     }
   };
 
@@ -49,7 +50,7 @@ function Login() {
                 value={Password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-
+              {error ? <p className="text-red-500 mt-2">{error}</p> : <p></p>}
               <button className="btn btn-primary mt-4" onClick={handleLogin}>
                 Login
               </button>
