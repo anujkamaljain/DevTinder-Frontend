@@ -25,14 +25,27 @@ const Feed = () => {
     getFeed();
   }, []);
 
-  return feed && feed[0] ? (
-    <div className="flex justify-center my-16">
-      <UserCard user={feed[0]} />
-    </div>
-  ) : (
-    <div className="text-center text-2xl my-20 flex flex-col justify-center items-center">Loading user feed...
+  if(!feed){
+    return(
+      <div className="text-center text-2xl my-20 flex flex-col justify-center items-center">Loading user feed...
     <span className="loading loading-spinner text-info mt-10 loading-xl"></span>
     </div>
+    )
+  }
+
+  if(feed.length === 0){
+    return (
+      <div className="text-center text-2xl my-20 flex flex-col justify-center items-center">No feed available.
+    </div>
+    )
+  }
+
+  return (
+    feed && (
+      <div className="flex justify-center my-16">
+        <UserCard user={feed[0]} />
+      </div>
+    )
   );
 };
 

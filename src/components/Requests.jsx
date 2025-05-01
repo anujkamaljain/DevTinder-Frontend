@@ -2,11 +2,25 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import { BASE_URL } from "../utils/constants";
 import { useDispatch, useSelector } from "react-redux";
-import { addRequest } from "../utils/requestsSlice";
+import { addRequest, removeRequest } from "../utils/requestsSlice";
 
 const Requests = () => {
   const dispatch = useDispatch();
   const requests = useSelector((store) => store.requests);
+
+  const reviewRequest = async (status, _id) => {
+    try {
+      const res = await axios.post(
+        BASE_URL + "/request/review/" + status + "/" + _id,
+        {},
+        { withCredentials: true }
+      );
+      dispatch(removeRequest(_id));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const fetchRequests = async () => {
     try {
       const res = await axios.get(BASE_URL + "/user/requests", {
@@ -39,12 +53,13 @@ const Requests = () => {
       <h1 className="text-bold text-3xl font-bold">Connection Requests</h1>
 
       {requests.map((request) => {
+        const reqid = request._id;
         const { _id, firstName, lastName, photoUrl, age, gender, about } =
           request.fromUserId;
         return (
           <div
             key={_id}
-            className="mt-6 p-4 rounded-lg bg-base-300 flex w-1/2 mx-auto justify-between"
+            className="mt-6 p-4 rounded-lg bg-base-300 flex w-2/3 mx-auto justify-between"
           >
             <div className="flex">
               <div>
@@ -63,8 +78,18 @@ const Requests = () => {
               </div>
             </div>
             <div className="my-auto ">
-              <button className="btn btn-info mx-2">Accept</button>
-              <button className="btn btn-secondary mx-2">Reject</button>
+              <button
+                className="btn btn-info mx-2"
+                onClick={() => reviewRequest("accepted", reqid)}
+              >
+                Accept
+              </button>
+              <button
+                className="btn btn-secondary mx-2"
+                onClick={() => reviewRequest("rejected", reqid)}
+              >
+                Reject
+              </button>
             </div>
           </div>
         );

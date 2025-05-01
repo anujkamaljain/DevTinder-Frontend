@@ -8,8 +8,8 @@ import { addUser } from "../utils/userSlice";
 const EditProfile = ({ user }) => {
   const [firstName, setFirstName] = React.useState(user.firstName);
   const [lastName, setLastName] = React.useState(user.lastName);
-  const [age, setAge] = React.useState(user.age);
-  const [gender, setGender] = React.useState(user.gender);
+  const [age, setAge] = React.useState(user.age || "");
+  const [gender, setGender] = React.useState(user.gender || "");
   const [about, setAbout] = React.useState(user.about);
   const [photoUrl, setPhotoUrl] = React.useState(user.photoUrl);
   const [error, seterror] = useState("");

@@ -5,7 +5,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { BASE_URL } from "../utils/constants";
 import { removeUser } from "../utils/userSlice";
 import { removeConnections } from "../utils/connectionsSlice";
-import { removeFeed } from "../utils/feedSlice";
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -19,7 +18,6 @@ const Navbar = () => {
       );
       dispatch(removeUser());
       dispatch(removeConnections());
-      dispatch(removeFeed());
       navigate("/login");
     } catch (err) {}
   };
@@ -60,6 +58,9 @@ const Navbar = () => {
                   Profile
                   <span className="badge">Edit</span>
                 </Link>
+              </li>
+              <li>
+                <Link to="/">Home</Link>
               </li>
               <li>
                 <Link to="/connections">Connections</Link>
