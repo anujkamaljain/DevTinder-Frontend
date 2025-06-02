@@ -63,7 +63,7 @@ function Login() {
             <fieldset className="fieldset w-xs bg-base-300 border border-base-300 p-5 rounded-box">
               {isLogin ? (
                 <></>
-              ) : (
+               ) : (
                 <>
                   <label className="fieldset-label">First Name</label>
                   <input
@@ -98,6 +98,11 @@ function Login() {
                 placeholder="Password"
                 value={Password}
                 onChange={(e) => setPassword(e.target.value)}
+                onKeyDown={(e) => {
+                  if(e.key === "Enter") {
+                    isLogin ? handleLogin() : handleSignUp();
+                  }
+                }}
               />
               {error ? <p className="text-red-500 mt-2">{error}</p> : <p></p>}
               <button className="btn btn-primary mt-4" onClick={isLogin ? handleLogin : handleSignUp}>
