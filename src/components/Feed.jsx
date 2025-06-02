@@ -7,11 +7,10 @@ import UserCard from "./UserCard";
 
 const Feed = () => {
   const feed = useSelector((store) => store.feed);
-  const user = useSelector((store) => store.user);
 
   const dispatch = useDispatch();
   const getFeed = async () => {
-    if (feed || !user) return;
+    if (feed) return;
     try {
       const res = await axios.get(BASE_URL + "/user/feed", {
         withCredentials: true,
@@ -24,7 +23,7 @@ const Feed = () => {
 
   useEffect(() => {
     getFeed();
-  }, [user]);
+  }, []);
 
   if(!feed){
     return(
