@@ -99,12 +99,11 @@ The frontend communicates with the [DevTinder-Backend](https://github.com/anujka
 ```bash
 DevTinder-Frontend/
 ├── src/
-│   ├── config/          # Database connection config
-│   ├── helpers/         # Helper functions (e.g., validations)
-│   ├── middlewares/     # Authentication middleware
-│   ├── models/          # Mongoose schemas
-│   ├── routes/          # API routes with inline controllers (users, auth, matches, etc.)
-│   └── utils/           # Utility functions (constants, cron jobs, chat, Amazon SES)
+│   ├── components/          # React components
+│   ├── utils/               # Redux Store and Slices 
+│   ├── index.css
+│   ├── main.jsx
+│   └── App.jsx
 │
 ├── public/              # logo of website
 ├── .gitignore           # Files/Folders to ignore in GitHub
