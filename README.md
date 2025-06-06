@@ -38,7 +38,7 @@ The frontend communicates with the [DevTinder-Backend](https://github.com/anujka
 | **React**      | Core UI framework               |
 | **React Router** | Routing between pages         |
 | **Axios**      | API calls to backend            |
-| **Tailwind CSS** | Fast, responsive styling      |
+| **Daisy UI**   | Fast, Tailwind based components |
 
 ---
 
