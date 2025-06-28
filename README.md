@@ -12,12 +12,6 @@
 
 ---
 
-## 🚀 Live Website
-
-👉 **Access it here**: [anujkamaljainprojects.me/login](https://anujkamaljainprojects.me/login)
-
----
-
 ## 🎯 About the Project
 
 This is the **React-based frontend** for **DevTinder**, a fun and functional platform for developers to:
